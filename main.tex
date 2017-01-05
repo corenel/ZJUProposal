@@ -1,0 +1,51 @@
+%%%%% --------------------------------------------------------------------------------
+%%
+%%                               Document Template
+%%
+%%%%% --------------------------------------------------------------------------------
+%% Copyright (C) Yusu Pan <xxdsox@gmail.com> 
+%% This is free software: you can redistribute it and/or modify it
+%% under the terms of the GNU General Public License as published by
+%% the Free Software Foundation, either version 3 of the License, or
+%% (at your option) any later version.
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%************************ Document Class Declaration ******************************
+%%
+\documentclass{style/zjuproposal}% thesis template of ZJU
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%************************* Command Define and Settings ****************************
+%%
+\usepackage{style/custom}% common settings
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%******************************** Content *****************************************
+%%
+\begin{document}
+%%
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%******************************** Frontmatter *************************************
+%%
+\pagenumbering{roman}% page numbers with roman style
+\input{doc/frontpage}
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%******************************** Mainmatter **************************************
+%%
+\clearpage
+\pagenumbering{arabic}% restart page numbers with arabic style
+\input{doc/literature_review}%
+\newpage
+\input{doc/proposal}%
+\newpage
+\input{doc/literature_translation}%
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%******************************* Backmatter ***************************************
+%%m
+\bibliography{bib/proposal}%
+%%
+\end{document}
+%%%%% --------------------------------------------------------------------------------
