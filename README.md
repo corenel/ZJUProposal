@@ -5,5 +5,5 @@ Open `main.tex` in Sublime Text 3 with latextools, then press `Cmd + B` to build
 ## Todo
 * ~~Format captions of tables and figures~~
 * ~~Add title page~~
-* Modify GB7714
+* ~~Modify IEEEtran~~
 * Add `compile.sh`
