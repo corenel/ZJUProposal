@@ -66,7 +66,7 @@
 % perpage
 \RequirePackage[stable,perpage,symbol*]{footmisc}
 % Multiple bib
-\RequirePackage{multibib}
+\RequirePackage[resetlabels]{multibib}
 % Set space in reference
 \RequirePackage{setspace}
 %%%%% --------------------------------------------------------------------------------
