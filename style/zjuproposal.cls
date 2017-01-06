@@ -16,7 +16,7 @@
 %%
 %%%%*************************** Loadclass Infomation *********************************
 %%
-\LoadClass[UTF8,,a4paper,oneside,zihao=-4,linespread=1.6]{ctexart}
+\LoadClass[UTF8,a4paper,oneside,zihao=-4,linespread=1.6]{ctexart}
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%***************************** Package Infomation *********************************
@@ -35,9 +35,10 @@
 %%
 \AtEndOfPackage{%class cfg loaded after package, makes commands at preamble take effect
   \makeatletter
-  \InputIfFileExists{Style/zjuproposal.cfg}{}{}
+  \InputIfFileExists{./style/zjuproposal.cfg}{}{}
   \makeatother
 }
+
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%******************************* Page Layout **************************************
@@ -128,14 +129,75 @@
 
 %% AutoFakeBold
 \newcommand\FakeBold[1]{{\CJKfontspec[AutoFakeBold = true]{STSong} \bfseries #1}}
+
+%% underline
+\renewcommand{\CJKunderlinecolor}{\color[rgb]{0,0,0}}
+\def\ZJU@underline[#1]#2{%
+    \CJKunderline{\hbox to #1{\hfill#2\hfill}}}
+\def\ZJUunderline{\@ifnextchar[\ZJU@underline\CJKunderline}
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%********************** Chinese Titlepage Items ***********************************
 %%
+\renewcommand\title[2][\ZJU@value@title]{%
+  \def\ZJU@value@title{#2}
+  %\def\ZJU@value@titlemark{\MakeUppercase{#1}}}
+  \def\ZJU@value@titlemark{#1}}
+\def\@title{\ZJU@value@titlemark}
+\renewcommand\author[1]{\def\ZJU@value@author{#1}}
+\newcommand\authorid[1]{\def\ZJU@value@authorid{#1}}
+\newcommand\advisor[1]{\def\ZJU@value@advisor{#1}}
+\newcommand\advisortitle[1]{\def\ZJU@value@advisortitle{#1}}
+\newcommand\degree[1]{\def\ZJU@value@degree{#1}}
+\newcommand\degreetype[1]{\def\ZJU@value@degreetype{#1}}
+\newcommand\major[1]{\def\ZJU@value@major{#1}}
+\newcommand\institute[1]{\def\ZJU@value@institute{#1}}
+\newcommand\chinesedate[1]{\def\ZJU@value@chinesedate{#1}}
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%**************************** Make Titlepage ******************************
 %%
+\renewcommand\maketitle{%
+  \cleardoublepage
+  \thispagestyle{empty}
+  \begin{center}
+    \zihao{-3}\bfseries
+    \vspace{10mm}
+    \begin{center}
+      \includegraphics[width=60mm]{./style/logo/ZJDX.pdf}\par
+      \vspace{4mm}
+      {\songti \zihao{-1}\ZJU@label@thesis}
+      \par
+      \vspace{10mm}
+      \includegraphics[width=60mm]{./style/logo/QSY.pdf}
+    \end{center}
+    \vspace{10mm}
+
+    \def\tabcolsep{1pt}
+    \def\arraystretch{1.2}
+    %\hskip -15pt
+    \begin{tabular}{lc}
+      \ZJU@label@title & \ZJUunderline[295pt]{\ZJU@value@title}
+    \\
+      \ZJU@label@author & \ZJUunderline[132pt]{\ZJU@value@author}\ZJU@label@authorid\ZJUunderline[132pt]{\ZJU@value@authorid}
+    \\
+      \ZJU@label@advisor & \ZJUunderline[132pt]{\ZJU@value@advisor}\ZJU@label@advisortitle\ZJUunderline[132pt]{\ZJU@value@advisortitle}
+    \\
+      \ZJU@label@degree & \ZJUunderline[295pt]{\ZJU@value@degreetype\ZJU@value@degree}
+    \\
+      \ZJU@label@major &  \ZJUunderline[295pt]{\ZJU@value@major}
+    \\
+      \ZJU@label@institute & \ZJUunderline[295pt]{\ZJU@value@institute}
+    \\
+      \ZJU@label@date & \ZJUunderline[295pt]{\ZJU@value@chinesedate}
+    \end{tabular}
+
+    \vspace*{50pt}
+
+    \ZJU@label@mark
+  \end{center}
+  \clearpage
+}
 %%%%% --------------------------------------------------------------------------------
 \endinput
 %% End of file
