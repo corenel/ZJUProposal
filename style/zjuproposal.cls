@@ -319,7 +319,7 @@
     \begin{center}
       \includegraphics[width=60mm]{./style/logo/ZJDX.pdf}\par
       \vspace{4mm}
-      {\songti \zihao{-1}\ZJU@label@thesis}
+      {\zihao{-1} \bfseries \ZJU@label@thesis}
       \par
       \vspace{10mm}
       \includegraphics[width=60mm]{./style/logo/QSY.pdf}
