@@ -121,7 +121,7 @@
 \setmainfont{Times New Roman}
 %% Toc format setting
 \titlecontents{part}[0em]
-{\zihao{-4} \CJKfontspec[AutoFakeBold = true]{STSong} \bfseries}
+{\zihao{-4} \bfseries}
 {\contentslabel{2em}}
 {}
 {\titlerule*{.}\contentspage}
@@ -147,7 +147,7 @@
   part={
     numbering=false,
     nameformat=\zihao{-4} \FakeBold,
-    titleformat=\center \zihao{-2} \FakeBold,
+    titleformat=\center \songti \zihao{-2} \FakeBold,
     beforeskip=0pt,
     afterskip=0pt,
   },
@@ -197,7 +197,14 @@
   \let\CJKpunctsymbol\CJKoldpunctsymbol}
 
 %% AutoFakeBold
-\newcommand\FakeBold[1]{{\CJKfontspec[AutoFakeBold = true]{STSong} \bfseries #1}}
+\font\sn="SimSun"
+\def\embolden#1{%
+\special{pdf: literal direct 0.5 w 2 Tr}%
+#1%
+\special{pdf: literal direct 0 w 0 Tr}%
+}
+%\newcommand\FakeBold[1]{{\CJKfontspec[AutoFakeBold = false]{STSong} \bfseries #1}}
+\newcommand\FakeBold[1]{{\embolden{#1}}}
 
 %% underline
 \renewcommand{\CJKunderlinecolor}{\color[rgb]{0,0,0}}
