@@ -164,6 +164,19 @@
     aftername=~~,
     beforeskip=0pt,
     afterskip=0pt
+  },
+  subsubsection={
+    number=\arabic{subsection}.\arabic{subsubsection}.,
+    format=\zihao{-4} \FakeBold,
+    aftername=~~,
+    beforeskip=0pt,
+    afterskip=0pt
+  },
+  paragraph={
+    format=\zihao{-4} \FakeBold,
+    beforeskip=0pt,
+    afterskip=0pt,
+    indent=2em,
   }
 }
 
