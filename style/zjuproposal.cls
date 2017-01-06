@@ -67,6 +67,8 @@
 \RequirePackage[stable,perpage,symbol*]{footmisc}
 % Multiple bib
 \RequirePackage{multibib}
+% Set space in reference
+\RequirePackage{setspace}
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%************************ Load Class Configuretion ********************************
