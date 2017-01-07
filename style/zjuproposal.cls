@@ -54,7 +54,7 @@
 % utilities for table
 \RequirePackage{array}
 % hyperref 宏包可根据交叉引用生成超链接，同时生成 PDF 文档的书签。
-\RequirePackage{hyperref}
+\RequirePackage[hypertexnames=false]{hyperref}
 % 参考文献正文上标样式设置
 \RequirePackage[sort&compress,numbers]{natbib}
 % hypernat 可以让hyperref 和natbib 混合使用，但它需要放在这两者之后。
@@ -69,6 +69,7 @@
 \RequirePackage[resetlabels]{multibib}
 % Set space in reference
 \RequirePackage{setspace}
+\RequirePackage{enumitem}
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%************************ Load Class Configuretion ********************************
@@ -227,8 +228,11 @@
 
 %% Figure directory
 \graphicspath{%
-  {./figures/}%
+  {./figure/}%
 }
+
+%% itemize line space setting
+\setlist[itemize]{noitemsep, topsep=0pt}
 
 % ---------- 参考文献样式 ----------
 % Create cites command
