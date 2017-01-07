@@ -64,12 +64,15 @@
 % footmisc 宏包提供了对脚注样式的控制功能。
 % stable参数主要使脚注\footnote可以用在章节命令中；
 % perpage
-\RequirePackage[stable,perpage,symbol*]{footmisc}
+\RequirePackage[stable,perpage]{footmisc}
 % Multiple bib
 \RequirePackage[resetlabels]{multibib}
 % Set space in reference
 \RequirePackage{setspace}
+% Set format of itemize
 \RequirePackage{enumitem}
+% Miltiple columns
+\RequirePackage{multicol}
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%************************ Load Class Configuretion ********************************
@@ -92,8 +95,8 @@
       % linkcolor=blue,
       % anchorcolor=blue,
       % urlcolor=blue,
-    hidelinks,      % 隐藏超链接的颜色和边框。
-    % draft,        % 草稿模式，提高编译速度，需要时注释掉就可以了。
+      hidelinks,      % 隐藏超链接的颜色和边框。
+      % draft,        % 草稿模式，提高编译速度，需要时注释掉就可以了。
   }
 }
 \AtBeginDocument{
@@ -233,6 +236,11 @@
 
 %% itemize line space setting
 \setlist[itemize]{noitemsep, topsep=0pt}
+
+% workaround for figure in multicols
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
 
 % ---------- 参考文献样式 ----------
 % Create cites command
