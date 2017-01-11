@@ -332,14 +332,11 @@
   \def\ZJU@value@titlemark{#1}}
 \def\@title{\ZJU@value@titlemark}
 \renewcommand\author[1]{\def\ZJU@value@author{#1}}
-\newcommand\authorid[1]{\def\ZJU@value@authorid{#1}}
 \newcommand\advisor[1]{\def\ZJU@value@advisor{#1}}
-\newcommand\advisortitle[1]{\def\ZJU@value@advisortitle{#1}}
-\newcommand\degree[1]{\def\ZJU@value@degree{#1}}
-\newcommand\degreetype[1]{\def\ZJU@value@degreetype{#1}}
-\newcommand\major[1]{\def\ZJU@value@major{#1}}
-\newcommand\institute[1]{\def\ZJU@value@institute{#1}}
-\newcommand\chinesedate[1]{\def\ZJU@value@chinesedate{#1}}
+\newcommand\grademajor[1]{\def\ZJU@value@grademajor{#1}}
+\newcommand\college[1]{\def\ZJU@value@college{#1}}
+\newcommand\review[1]{\def\ZJU@value@review{#1}}
+%\newcommand\chinesedate[1]{\def\ZJU@value@chinesedate{#1}}
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%**************************** Make Titlepage ******************************
@@ -348,41 +345,70 @@
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
-    \zihao{-3}\bfseries
-    \vspace{10mm}
+    \zihao{3}\bfseries
+    \vspace*{18mm}
     \begin{center}
-      \includegraphics[width=60mm]{./style/logo/ZJDX.pdf}\par
-      \vspace{4mm}
-      {\zihao{-1} \bfseries \ZJU@label@thesis}
+      \includegraphics[width=100mm]{./style/logo/ZJDX.pdf}\par
+      \vspace{16mm}
+      {\zihao{-1} \bfseries \ZJU@label@project}
       \par
-      \vspace{10mm}
-      \includegraphics[width=60mm]{./style/logo/QSY.pdf}
-    \end{center}
-    \vspace{10mm}
+      \vspace{14mm}
+      {\zihao{-1} \bfseries \ZJU@label@proposal}
+      \par
+      \vspace{18mm}
+      \includegraphics[width=30.9mm]{./style/logo/QSY.pdf}
+    \end{center} 
+    \vspace{24mm}
 
     \def\tabcolsep{1pt}
     \def\arraystretch{1.2}
-    %\hskip -15pt
+    \hskip 15pt
     \begin{tabular}{lc}
-      \ZJU@label@title & \ZJUunderline[295pt]{\ZJU@value@title}
-    \\
-      \ZJU@label@author & \ZJUunderline[132pt]{\ZJU@value@author}\ZJU@label@authorid\ZJUunderline[132pt]{\ZJU@value@authorid}
-    \\
-      \ZJU@label@advisor & \ZJUunderline[132pt]{\ZJU@value@advisor}\ZJU@label@advisortitle\ZJUunderline[132pt]{\ZJU@value@advisortitle}
-    \\
-      \ZJU@label@degree & \ZJUunderline[295pt]{\ZJU@value@degreetype\ZJU@value@degree}
-    \\
-      \ZJU@label@major &  \ZJUunderline[295pt]{\ZJU@value@major}
-    \\
-      \ZJU@label@institute & \ZJUunderline[295pt]{\ZJU@value@institute}
-    \\
-      \ZJU@label@date & \ZJUunderline[295pt]{\ZJU@value@chinesedate}
+      %\ZJU@label@title & \ZJUunderline[295pt]{\ZJU@value@title} \\
+      \ZJU@label@author & \ZJUunderline[220pt]{\ZJU@value@author} \\
+      \ZJU@label@advisor & \ZJUunderline[220pt]{\ZJU@value@advisor} \\
+      \ZJU@label@grademajor &  \ZJUunderline[220pt]{\ZJU@value@grademajor} \\
+      \ZJU@label@college & \ZJUunderline[220pt]{\ZJU@value@college} \\
+      %\ZJU@label@date & \ZJUunderline[295pt]{\ZJU@value@chinesedate}
     \end{tabular}
 
     \vspace*{50pt}
-
-    \ZJU@label@mark
   \end{center}
+  
+  \newpage
+  \begingroup
+    \zihao{4} \fangsong
+    \FakeBold{一、\ZJU@label@title：\ZJUunderline[295pt]{\ZJU@value@title}} \par
+    \FakeBold{二、指导教师对文献综述和开题报告的具体内容要求：} \par
+    \ZJU@value@review
+    \par
+    \vspace*{\fill}
+    \begin{flushright}
+      \FakeBold{指导教师（签名）}\ZJUunderline[100pt]{} \par
+      \FakeBold{年~~~~月~~~~日}
+    \end{flushright}
+  \endgroup
+
+  \newpage
+  \begingroup
+    \zihao{4} \fangsong
+    \begin{center}
+        {\zihao{-2} \FakeBold{毕业设计文献综述和开题报告考核}}
+    \end{center}
+    \par
+    \FakeBold{一、对文献综述、外文翻译和开题报告评语及成绩评定：}
+    \par
+    {\zihao{3} \FakeBold{评语：}}
+    \par
+    \vspace{100mm}
+    {\zihao{3} \FakeBold{成绩：}}
+    \vspace*{\fill}
+    \begin{flushright}
+      \FakeBold{开题报告答辩小组负责人（签名）}\ZJUunderline[100pt]{} \par
+      \FakeBold{年~~~~月~~~~日}
+    \end{flushright}
+  \endgroup
+
   \clearpage
 }
 %%%%% --------------------------------------------------------------------------------
