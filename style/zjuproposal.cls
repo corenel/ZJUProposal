@@ -336,6 +336,8 @@
 \newcommand\grademajor[1]{\def\ZJU@value@grademajor{#1}}
 \newcommand\college[1]{\def\ZJU@value@college{#1}}
 \newcommand\review[1]{\def\ZJU@value@review{#1}}
+\newcommand\remark[1]{\def\ZJU@value@remark{#1}}
+\newcommand\result[1]{\def\ZJU@value@result{#1}}
 %\newcommand\chinesedate[1]{\def\ZJU@value@chinesedate{#1}}
 %%%%% --------------------------------------------------------------------------------
 %%
@@ -400,8 +402,11 @@
     \par
     {\zihao{3} \FakeBold{评语：}}
     \par
-    \vspace{100mm}
+    \ZJU@value@remark \par
+    \vspace{30mm}
     {\zihao{3} \FakeBold{成绩：}}
+    \par
+    \ZJU@value@result \par
     \vspace*{\fill}
     \begin{flushright}
       \FakeBold{开题报告答辩小组负责人（签名）}\ZJUunderline[100pt]{} \par
