@@ -7,3 +7,5 @@ Open `main.tex` in Sublime Text 3 with latextools, then press `Cmd + B` to build
 * ~~Add title page~~
 * ~~Modify IEEEtran~~
 * Add `compile.sh`
+## Template for final report
+You can look at it in `thesis` branch
