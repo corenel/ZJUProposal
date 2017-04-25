@@ -131,14 +131,14 @@
 {\titlerule*{.}\contentspage}
 
 \titlecontents{section}[2em]
-{\zihao{5}}
+{\zihao{5} \bfseries}
 {\contentslabel{2em}}
 {}
 {\titlerule*{.}\contentspage}
 
 \titlecontents{subsection}[4em]
 {\zihao{5}}
-{\contentslabel{1em}}
+{\contentslabel{2em}}
 {}
 {\titlerule*{.}\contentspage}
 
@@ -156,25 +156,26 @@
     afterskip=0pt,
   },
   section={
-    number=\chinese{section}、,
-    format=\zihao{-3} \FakeBold,
-    aftername=,
-    beforeskip=0pt,
-    afterskip=0pt,
+    % number=\chinese{section}、,
+    number=\arabic{section}.,
+    format=\zihao{3} \FakeBold,
+    % aftername=,
+    % beforeskip=0pt,
+    % afterskip=0pt,
   },
   subsection={
-    number=\arabic{subsection}.,
-    format=\zihao{4} \FakeBold,
-    aftername=~~,
-    beforeskip=0pt,
-    afterskip=0pt
+    % number=\arabic{subsection}.,
+    format=\zihao{-3} \FakeBold,
+    % aftername=~~,
+    % beforeskip=0pt,
+    % afterskip=0pt
   },
   subsubsection={
-    number=\arabic{subsection}.\arabic{subsubsection}.,
-    format=\zihao{-4} \FakeBold,
-    aftername=~~,
-    beforeskip=0pt,
-    afterskip=0pt
+    % number=\arabic{subsection}.\arabic{subsubsection}.,
+    format=\zihao{4} \FakeBold,
+    % aftername=~~,
+    % beforeskip=0pt,
+    % afterskip=0pt
   },
   paragraph={
     format=\zihao{-4} \FakeBold,
@@ -420,7 +421,7 @@
   %     \FakeBold{年~~~~月~~~~日}
   %   \end{flushright}
   % \endgroup
-
+  % 
   % \newpage
   % \begingroup
   %   \zihao{4} \fangsong
