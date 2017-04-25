@@ -335,9 +335,9 @@
 \newcommand\advisor[1]{\def\ZJU@value@advisor{#1}}
 \newcommand\grademajor[1]{\def\ZJU@value@grademajor{#1}}
 \newcommand\college[1]{\def\ZJU@value@college{#1}}
-\newcommand\review[1]{\def\ZJU@value@review{#1}}
 \newcommand\remark[1]{\def\ZJU@value@remark{#1}}
 \newcommand\result[1]{\def\ZJU@value@result{#1}}
+\newcommand\acknowledgement[1]{\def\ZJU@value@acknowledgement{#1}}
 %\newcommand\chinesedate[1]{\def\ZJU@value@chinesedate{#1}}
 %%%%% --------------------------------------------------------------------------------
 %%
@@ -366,7 +366,7 @@
     \def\arraystretch{1.2}
     \hskip 15pt
     \begin{tabular}{lc}
-      %\ZJU@label@title & \ZJUunderline[295pt]{\ZJU@value@title} \\
+      \ZJU@label@title & \ZJUunderline[295pt]{\ZJU@value@title} \\
       \ZJU@label@author & \ZJUunderline[220pt]{\ZJU@value@author} \\
       \ZJU@label@advisor & \ZJUunderline[220pt]{\ZJU@value@advisor} \\
       \ZJU@label@grademajor &  \ZJUunderline[220pt]{\ZJU@value@grademajor} \\
@@ -376,43 +376,73 @@
 
     \vspace*{50pt}
   \end{center}
-  
+
   \newpage
   \begingroup
-    \zihao{4} \fangsong
-    \FakeBold{一、\ZJU@label@title：\ZJUunderline[295pt]{\ZJU@value@title}} \par
-    \FakeBold{二、指导教师对文献综述和开题报告的具体内容要求：} \par
-    \ZJU@value@review
+    \zihao{4}
+    \begin{center}
+      \zihao{3} \FakeBold{浙江大学本科生毕业论文诚信承诺书} \par
+    \end{center}
     \par
+    \begin{enumerate}[leftmargin=2em]
+      \item 本人郑重地承诺所呈交的毕业论文，是在指导教师的指导下严格按照学校和学院有关规定完成的。
+      \item 本人在毕业论文中引用他人的观点和参考资料均加以注释和说明。
+      \item 本人承诺在毕业论文选题和研究内容过程中没有抄袭他人研究成果和伪造相关数据等行为。
+      \item 在毕业论文中对侵犯任何方面知识产权的行为，由本人承担相应的法律责任。
+    \end{enumerate}
     \vspace*{\fill}
     \begin{flushright}
-      \FakeBold{指导教师（签名）}\ZJUunderline[100pt]{} \par
-      \FakeBold{年~~~~月~~~~日}
+      作者专业班级 \ZJUunderline[100pt]{} 学号 \ZJUunderline[100pt]{} \par
+      作者签名 \ZJUunderline[100pt]{}
     \end{flushright}
   \endgroup
 
   \newpage
   \begingroup
-    \zihao{4} \fangsong
+    \zihao{-4}
     \begin{center}
-        {\zihao{-2} \FakeBold{毕业设计文献综述和开题报告考核}}
+      \zihao{3} \FakeBold{致谢} \par
     \end{center}
     \par
-    \FakeBold{一、对文献综述、外文翻译和开题报告评语及成绩评定：}
-    \par
-    {\zihao{3} \FakeBold{评语：}}
-    \par
-    \ZJU@value@remark \par
-    \vspace{30mm}
-    {\zihao{3} \FakeBold{成绩：}}
-    \par
-    \ZJU@value@result \par
-    \vspace*{\fill}
-    \begin{flushright}
-      \FakeBold{开题报告答辩小组负责人（签名）}\ZJUunderline[100pt]{} \par
-      \FakeBold{年~~~~月~~~~日}
-    \end{flushright}
+    \ZJU@value@acknowledgement \par
   \endgroup
+  
+  % \newpage
+  % \begingroup
+  %   \zihao{4} \fangsong
+  %   \FakeBold{一、\ZJU@label@title：\ZJUunderline[295pt]{\ZJU@value@title}} \par
+  %   \FakeBold{二、指导教师对文献综述和开题报告的具体内容要求：} \par
+  %   \ZJU@value@review
+  %   \par
+  %   \vspace*{\fill}
+  %   \begin{flushright}
+  %     \FakeBold{指导教师（签名）}\ZJUunderline[100pt]{} \par
+  %     \FakeBold{年~~~~月~~~~日}
+  %   \end{flushright}
+  % \endgroup
+
+  % \newpage
+  % \begingroup
+  %   \zihao{4} \fangsong
+  %   \begin{center}
+  %       {\zihao{-2} \FakeBold{毕业设计文献综述和开题报告考核}}
+  %   \end{center}
+  %   \par
+  %   \FakeBold{一、对文献综述、外文翻译和开题报告评语及成绩评定：}
+  %   \par
+  %   {\zihao{3} \FakeBold{评语：}}
+  %   \par
+  %   \ZJU@value@remark \par
+  %   \vspace{30mm}
+  %   {\zihao{3} \FakeBold{成绩：}}
+  %   \par
+  %   \ZJU@value@result \par
+  %   \vspace*{\fill}
+  %   \begin{flushright}
+  %     \FakeBold{开题报告答辩小组负责人（签名）}\ZJUunderline[100pt]{} \par
+  %     \FakeBold{年~~~~月~~~~日}
+  %   \end{flushright}
+  % \endgroup
 
   \clearpage
 }
