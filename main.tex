@@ -28,7 +28,8 @@
 %%
 %%%%******************************** Frontmatter *************************************
 %%
-\pagenumbering{roman}% page numbers with roman style
+% \pagenumbering{roman}% page numbers with roman style
+\pagenumbering{gobble}% no page numbers
 \input{doc/frontpage}
 %%%%% --------------------------------------------------------------------------------
 %%
@@ -44,8 +45,11 @@
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%******************************* Backmatter ***************************************
-%%m
-
+%%
+% \appendix
+\pagenumbering{gobble}% no page numbers
+\newpage
+\input{doc/backpage}%
 %%
 \end{document}
 %%%%% --------------------------------------------------------------------------------

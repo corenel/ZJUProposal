@@ -114,7 +114,7 @@
 %%%%******************************* Page Layout **************************************
 %%
 %% page layout
-\geometry{left=2.1cm,right=2.1cm,top=2.5cm,bottom=2.0cm,headheight=1.5cm,footskip=1.75cm}
+\geometry{left=2.1cm,right=2.1cm,top=2.5cm,bottom=2.0cm,headheight=1.5cm,footskip=1.00cm}
 \pagestyle{plain}
 %%%%% --------------------------------------------------------------------------------
 %%
@@ -125,10 +125,16 @@
 \setmainfont{Times New Roman}
 %% Toc format setting
 \titlecontents{part}[0em]
-{\zihao{-4} \bfseries}
+{\zihao{-4} \songti}
 {\contentslabel{2em}}
 {}
 {\titlerule*{.}\contentspage}
+
+\titlecontents{chapter}[0em]
+{\zihao{-4} \songti}
+{\contentslabel{2em}}
+{}
+{}
 
 \titlecontents{section}[2em]
 {\zihao{5}}
@@ -150,21 +156,21 @@
   bibname=\nobreak,
   part={
     numbering=false,
-    nameformat=\zihao{-4} \FakeBold,
+    nameformat=\zihao{-4} \songti \FakeBold,
     titleformat=\center \songti \zihao{-2} \FakeBold,
     beforeskip=0pt,
     afterskip=0pt,
   },
   section={
     number=\chinese{section}、,
-    format=\zihao{-3} \FakeBold,
+    format=\zihao{-3} \songti \FakeBold,
     aftername=,
     beforeskip=0pt,
     afterskip=0pt,
   },
   subsection={
     number=\arabic{subsection}.,
-    format=\zihao{4} \FakeBold,
+    format=\zihao{4} \songti \FakeBold,
     aftername=~~,
     beforeskip=0pt,
     afterskip=0pt
@@ -276,7 +282,7 @@
 \captionsetup{%
   format=hang,
   labelsep=quad,    % 去掉图表号后的冒号。图序与图名文字之间空一个汉字宽度。
-  skip=0pt,      % 标题与图表之间空10pt距离。
+  skip=10pt,      % 标题与图表之间空10pt距离。
   font={small,fakebf},     % 标题字体比正文小一号，这里取small。
   % width=0.75\textwidth  % 标题最大宽度为0.75倍正文宽度。
 %TODO:width影响bi-second居中
@@ -335,9 +341,13 @@
 \newcommand\advisor[1]{\def\ZJU@value@advisor{#1}}
 \newcommand\grademajor[1]{\def\ZJU@value@grademajor{#1}}
 \newcommand\college[1]{\def\ZJU@value@college{#1}}
-\newcommand\review[1]{\def\ZJU@value@review{#1}}
-\newcommand\remark[1]{\def\ZJU@value@remark{#1}}
+\newcommand\advisorreview[1]{\def\ZJU@value@advisorreview{#1}}
+\newcommand\reviewerremark[1]{\def\ZJU@value@reviewerremark{#1}}
 \newcommand\result[1]{\def\ZJU@value@result{#1}}
+\newcommand\advisorsignature[1]{\def\ZJU@value@advisorsignature{#1}}
+\newcommand\reviewersignature[1]{\def\ZJU@value@reviewersignature{#1}}
+\newcommand\advisorsigndate[1]{\def\ZJU@value@advisorsigndate{#1}}
+\newcommand\reviewersigndate[1]{\def\ZJU@value@reviewersigndate{#1}}
 %\newcommand\chinesedate[1]{\def\ZJU@value@chinesedate{#1}}
 %%%%% --------------------------------------------------------------------------------
 %%
@@ -377,21 +387,35 @@
     \vspace*{50pt}
   \end{center}
   
+
+  \clearpage
+}
+
+\newcommand\makereview{%
+  \cleardoublepage
+  \thispagestyle{empty}
+
   \newpage
   \begingroup
     \zihao{4} \fangsong
     \FakeBold{一、\ZJU@label@title：\ZJUunderline[295pt]{\ZJU@value@title}} \par
     \FakeBold{二、指导教师对文献综述和开题报告的具体内容要求：} \par
-    \ZJU@value@review
+    \ZJU@value@advisorreview
     \par
     \vspace*{\fill}
     \begin{flushright}
-      \FakeBold{指导教师（签名）}\ZJUunderline[100pt]{} \par
-      \FakeBold{年~~~~月~~~~日}
+      \FakeBold{指导教师（签名）}\ZJUunderline[100pt]{\ZJU@value@advisorsignature} \par
+      \FakeBold{\ZJU@value@advisorsigndate}
     \end{flushright}
   \endgroup
 
-  \newpage
+  \clearpage
+}
+
+\newcommand\makeresult{%
+  \cleardoublepage
+  \thispagestyle{empty}
+
   \begingroup
     \zihao{4} \fangsong
     \begin{center}
@@ -402,15 +426,15 @@
     \par
     {\zihao{3} \FakeBold{评语：}}
     \par
-    \ZJU@value@remark \par
+    \ZJU@value@reviewerremark \par
     \vspace{30mm}
     {\zihao{3} \FakeBold{成绩：}}
     \par
     \ZJU@value@result \par
     \vspace*{\fill}
     \begin{flushright}
-      \FakeBold{开题报告答辩小组负责人（签名）}\ZJUunderline[100pt]{} \par
-      \FakeBold{年~~~~月~~~~日}
+      \FakeBold{开题报告答辩小组负责人（签名）}\ZJUunderline[100pt]{\ZJU@value@reviewersignature} \par
+      \FakeBold{\ZJU@value@reviewersigndate}
     \end{flushright}
   \endgroup
 
