@@ -2,7 +2,7 @@
 %%
 %%%%***************************** Version Information ********************************
 %%
-%% Copyright (C) Huangrui Mo <huangrui.mo@gmail.com> 
+%% Copyright (C) Yusu Pan <xxdsox@gmail.com> 
 %% This is free software: you can redistribute it and/or modify it
 %% under the terms of the GNU General Public License as published by
 %% the Free Software Foundation, either version 3 of the License, or
@@ -73,6 +73,8 @@
 \RequirePackage{enumitem}
 % Miltiple columns
 \RequirePackage{multicol}
+% Page numbers in footer
+\RequirePackage{fancyhdr}
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%************************ Load Class Configuretion ********************************
@@ -115,7 +117,7 @@
 %%
 %% page layout
 \geometry{left=2.1cm,right=2.1cm,top=2.5cm,bottom=2.0cm,headheight=1.5cm,footskip=1.00cm}
-\pagestyle{plain}
+\pagestyle{fancy}
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%********************* Some Style Control Commands ********************************
@@ -150,7 +152,7 @@
 
 %% CTeX configuration
 \ctexset{
-  contentsname=\hfill \zihao{2} \heiti \textbf{目~~录} \hfill \hfill,
+  contentsname=\hfill \zihao{2} \heiti \textbf{目~~录} \hfill,
   figurename=\FakeBold{图},
   tablename=\FakeBold{表},
   bibname=\nobreak,
@@ -189,6 +191,12 @@
     indent=2em,
   }
 }
+
+
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%************************** FakeBold Settings *************************************
+%%
 
 %% pdfLieral XeCJK for FakeBold
 % value > 0
@@ -229,24 +237,10 @@
 %\newcommand\FakeBold[1]{{\CJKfontspec[AutoFakeBold = false]{STSong} \bfseries #1}}
 \newcommand\FakeBold[1]{{\embolden{#1}}}
 
-%% underline
-\renewcommand{\CJKunderlinecolor}{\color[rgb]{0,0,0}}
-\def\ZJU@underline[#1]#2{%
-    \CJKunderline{\hbox to #1{\hfill#2\hfill}}}
-\def\ZJUunderline{\@ifnextchar[\ZJU@underline\CJKunderline}
-
-%% Figure directory
-\graphicspath{%
-  {./figure/}%
-}
-
-%% itemize line space setting
-\setlist[itemize]{noitemsep, topsep=0pt}
-
-% workaround for figure in multicols
-\newenvironment{Figure}
-  {\par\medskip\noindent\minipage{\linewidth}}
-  {\endminipage\par\medskip}
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%*************************** Citing Settings **************************************
+%%
 
 % ---------- 参考文献样式 ----------
 % Create cites command
@@ -271,6 +265,21 @@
   \renewcommand*{\ref}[1]{\thinspace\oldref{#1}}%
   \renewcommand*{\eqref}[1]{(\oldref{#1})}
 }
+
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%************************* Floating Settings **************************************
+%%
+
+%% Figure directory
+\graphicspath{%
+  {./figure/}%
+}
+
+% workaround for figure in multicols
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
 
 % ---------- 浮动体相关定义 ----------
 % 设置浮动环境标题的字体大小。根据学位论文格式要求，插图和表格标题字体需要比正文
@@ -328,6 +337,37 @@
 % 在任意一个“浮动页”中，所有的浮动体高度与版心的高度的最小比值，默认为 0.5，这里
 % 设置成0.85。因此，浮动页中空白与版心的比值不会超过1-\floatpagefraction。
 \renewcommand{\floatpagefraction}{0.85}
+
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%************************** Footer Settings ***************************************
+%%
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead{}
+  \fancyfoot{}
+  \fancyfoot[RO, LE]{\thepage}}
+  \renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[RO, LE]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%******************************* Misc *********************************************
+%%
+
+%% underline
+\renewcommand{\CJKunderlinecolor}{\color[rgb]{0,0,0}}
+\def\ZJU@underline[#1]#2{%
+    \CJKunderline{\hbox to #1{\hfill#2\hfill}}}
+\def\ZJUunderline{\@ifnextchar[\ZJU@underline\CJKunderline}
+
+%% itemize line space setting
+\setlist[itemize]{noitemsep, topsep=0pt}
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%********************** Chinese Titlepage Items ***********************************
@@ -437,6 +477,18 @@
       \FakeBold{\ZJU@value@reviewersigndate}
     \end{flushright}
   \endgroup
+
+  \clearpage
+}
+
+\newcommand\makeorinialpaper{%
+  \cleardoublepage
+  \thispagestyle{empty}
+
+  \addcontentsline{toc}{part}{\protect\numberline{}\FakeBold{附：原稿}}%
+  \begin{flushleft}
+    {\zihao{-2} \FakeBold{附：原稿}}
+  \end{flushleft}
 
   \clearpage
 }
