@@ -16,7 +16,7 @@
 %%
 %%%%*************************** Loadclass Infomation *********************************
 %%
-\LoadClass[UTF8,a4paper,oneside,zihao=-4,linespread=1.6]{ctexart}
+\LoadClass[UTF8,a4paper,twoside,zihao=-4,linespread=1.6]{ctexart}
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%***************************** Package Infomation *********************************
