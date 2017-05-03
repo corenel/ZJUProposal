@@ -16,7 +16,7 @@
 %%
 %%%%*************************** Loadclass Infomation *********************************
 %%
-\LoadClass[UTF8,a4paper,oneside,zihao=-4,linespread=1.6]{ctexart}
+\LoadClass[UTF8,a4paper,twoside,zihao=-4,linespread=1.6]{ctexart}
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%***************************** Package Infomation *********************************
@@ -73,6 +73,8 @@
 \RequirePackage{enumitem}
 % Miltiple columns
 \RequirePackage{multicol}
+% Page numbers in footer
+\RequirePackage{fancyhdr}
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%************************ Load Class Configuretion ********************************
@@ -114,8 +116,8 @@
 %%%%******************************* Page Layout **************************************
 %%
 %% page layout
-\geometry{left=2.1cm,right=2.1cm,top=2.5cm,bottom=2.0cm,headheight=1.5cm,footskip=1.75cm}
-\pagestyle{plain}
+\geometry{left=2.1cm,right=2.1cm,top=2.5cm,bottom=2.0cm,headheight=1.5cm,footskip=1.00cm}
+\pagestyle{fancy}
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%********************* Some Style Control Commands ********************************
@@ -125,65 +127,77 @@
 \setmainfont{Times New Roman}
 %% Toc format setting
 \titlecontents{part}[0em]
-{\zihao{-4} \bfseries}
+{\zihao{5} \songti \bfseries}
 {\contentslabel{2em}}
 {}
 {\titlerule*{.}\contentspage}
 
 \titlecontents{section}[2em]
-{\zihao{5} \bfseries}
-{\contentslabel{2em}}
+{\zihao{5} \songti}
+{\contentslabel{1em}}
 {}
 {\titlerule*{.}\contentspage}
 
 \titlecontents{subsection}[4em]
-{\zihao{5}}
-{\contentslabel{2em}}
+{\zihao{5} \songti}
+{\contentslabel{1.5em}}
 {}
 {\titlerule*{.}\contentspage}
-
+     
 %% CTeX configuration
 \ctexset{
-  contentsname=\hfill \zihao{2} \heiti \textbf{目~~录} \hfill \hfill,
+  contentsname=\hfill \zihao{3} \FakeBold{目录} \hfill,
   figurename=\FakeBold{图},
   tablename=\FakeBold{表},
   bibname=\nobreak,
   part={
     numbering=false,
     nameformat=\zihao{-4} \FakeBold,
-    titleformat=\center \songti \zihao{-2} \FakeBold,
+    titleformat=\zihao{3} \FakeBold,
     beforeskip=0pt,
     afterskip=0pt,
   },
   section={
     % number=\chinese{section}、,
-    number=\arabic{section}.,
-    format=\zihao{3} \FakeBold,
-    % aftername=,
-    % beforeskip=0pt,
-    % afterskip=0pt,
+    number=\arabic{section},
+    format=\zihao{-3} \FakeBold,
+    aftername=~,
+    beforeskip=0pt,
+    afterskip=0pt,
   },
   subsection={
     % number=\arabic{subsection}.,
-    format=\zihao{-3} \FakeBold,
-    % aftername=~~,
-    % beforeskip=0pt,
-    % afterskip=0pt
+    format=\zihao{4} \FakeBold,
+    aftername=~,
+    beforeskip=0pt,
+    afterskip=0pt
   },
   subsubsection={
     % number=\arabic{subsection}.\arabic{subsubsection}.,
-    format=\zihao{4} \FakeBold,
-    % aftername=~~,
-    % beforeskip=0pt,
-    % afterskip=0pt
+    format=\zihao{-4} \FakeBold,
+    aftername=~,
+    beforeskip=0pt,
+    afterskip=0pt
   },
   paragraph={
     format=\zihao{-4} \FakeBold,
     beforeskip=0pt,
     afterskip=0pt,
     indent=2em,
+  },
+  subparagraph={
+    format=\zihao{-4} \FakeBold,
+    beforeskip=0pt,
+    afterskip=0pt,
+    indent=4em,
   }
 }
+
+
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%************************** FakeBold Settings *************************************
+%%
 
 %% pdfLieral XeCJK for FakeBold
 % value > 0
@@ -224,36 +238,18 @@
 %\newcommand\FakeBold[1]{{\CJKfontspec[AutoFakeBold = false]{STSong} \bfseries #1}}
 \newcommand\FakeBold[1]{{\embolden{#1}}}
 
-%% underline
-\renewcommand{\CJKunderlinecolor}{\color[rgb]{0,0,0}}
-\def\ZJU@underline[#1]#2{%
-    \CJKunderline{\hbox to #1{\hfill#2\hfill}}}
-\def\ZJUunderline{\@ifnextchar[\ZJU@underline\CJKunderline}
-
-%% Figure directory
-\graphicspath{%
-  {./figure/}%
-}
-
-%% itemize line space setting
-\setlist[itemize]{noitemsep, topsep=0pt}
-
-% workaround for figure in multicols
-\newenvironment{Figure}
-  {\par\medskip\noindent\minipage{\linewidth}}
-  {\endminipage\par\medskip}
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%*************************** Citing Settings **************************************
+%%
 
 % ---------- 参考文献样式 ----------
 % Create cites command
-\newcites{rev}{~}
-\newcites{pro}{~}
-\newcites{tra}{~}
+\newcites{fin}{~}
 
 %% 采用IEEEtran参考文献样式，
 %% 针对要求进行修改
-\bibliographystylerev{./style/IEEEtran_modified}
-\bibliographystylepro{./style/IEEEtran_modified}
-\bibliographystyletra{./style/IEEEtran_modified}
+\bibliographystylefin{./style/gbt7714-2005}
 
 %% natbib宏包命令，参考文献上标设置。
 \setcitestyle{super,square,comma}
@@ -267,6 +263,21 @@
   \renewcommand*{\eqref}[1]{(\oldref{#1})}
 }
 
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%************************* Floating Settings **************************************
+%%
+
+%% Figure directory
+\graphicspath{%
+  {./figure/}%
+}
+
+% workaround for figure in multicols
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
 % ---------- 浮动体相关定义 ----------
 % 设置浮动环境标题的字体大小。根据学位论文格式要求，插图和表格标题字体需要比正文
 % 字体略小。
@@ -277,7 +288,7 @@
 \captionsetup{%
   format=hang,
   labelsep=quad,    % 去掉图表号后的冒号。图序与图名文字之间空一个汉字宽度。
-  skip=0pt,      % 标题与图表之间空10pt距离。
+  skip=10pt,      % 标题与图表之间空10pt距离。
   font={small,fakebf},     % 标题字体比正文小一号，这里取small。
   % width=0.75\textwidth  % 标题最大宽度为0.75倍正文宽度。
 %TODO:width影响bi-second居中
@@ -323,6 +334,38 @@
 % 在任意一个“浮动页”中，所有的浮动体高度与版心的高度的最小比值，默认为 0.5，这里
 % 设置成0.85。因此，浮动页中空白与版心的比值不会超过1-\floatpagefraction。
 \renewcommand{\floatpagefraction}{0.85}
+
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%************************** Footer Settings ***************************************
+%%
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead{}
+  \fancyfoot{}
+  \fancyfoot[RO, LE]{\thepage}}
+  \renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[RO, LE]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+
+%%%%% --------------------------------------------------------------------------------
+%%
+%%%%******************************* Misc *********************************************
+%%
+
+%% underline
+\renewcommand{\CJKunderlinecolor}{\color[rgb]{0,0,0}}
+\def\ZJU@underline[#1]#2{%
+    \CJKunderline{\hbox to #1{\hfill#2\hfill}}}
+\def\ZJUunderline{\@ifnextchar[\ZJU@underline\CJKunderline}
+
+%% itemize line space setting
+\setlist[itemize]{noitemsep, topsep=0pt}
+
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%********************** Chinese Titlepage Items ***********************************
@@ -339,6 +382,10 @@
 \newcommand\remark[1]{\def\ZJU@value@remark{#1}}
 \newcommand\result[1]{\def\ZJU@value@result{#1}}
 \newcommand\acknowledgement[1]{\def\ZJU@value@acknowledgement{#1}}
+\newcommand\cnabstract[1]{\def\ZJU@value@cnabstract{#1}}
+\newcommand\cnkeywords[1]{\def\ZJU@value@cnkeywords{#1}}
+\newcommand\enabstract[1]{\def\ZJU@value@enabstract{#1}}
+\newcommand\enkeywords[1]{\def\ZJU@value@enkeywords{#1}}
 %\newcommand\chinesedate[1]{\def\ZJU@value@chinesedate{#1}}
 %%%%% --------------------------------------------------------------------------------
 %%
@@ -348,44 +395,52 @@
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
-    \zihao{3}\bfseries
-    \vspace*{18mm}
+    \zihao{3}
+    \vspace*{5mm}
     \begin{center}
       \includegraphics[width=100mm]{./style/logo/ZJDX.pdf}\par
-      \vspace{16mm}
+      \vspace{22.5mm}
       {\zihao{-1} \bfseries \ZJU@label@project}
       \par
-      \vspace{14mm}
+      \vspace{8mm}
       {\zihao{-1} \bfseries \ZJU@label@proposal}
       \par
-      \vspace{18mm}
-      \includegraphics[width=30.9mm]{./style/logo/QSY.pdf}
+      % \vspace{8mm}
+      % \includegraphics[width=30.9mm]{./style/logo/QSY.pdf}
     \end{center} 
-    \vspace{24mm}
+    \vspace{32mm}
 
     \def\tabcolsep{1pt}
     \def\arraystretch{1.2}
     \hskip 15pt
     \begin{tabular}{lc}
-      \ZJU@label@title & \ZJUunderline[295pt]{\ZJU@value@title} \\
-      \ZJU@label@author & \ZJUunderline[220pt]{\ZJU@value@author} \\
-      \ZJU@label@advisor & \ZJUunderline[220pt]{\ZJU@value@advisor} \\
-      \ZJU@label@grademajor &  \ZJUunderline[220pt]{\ZJU@value@grademajor} \\
-      \ZJU@label@college & \ZJUunderline[220pt]{\ZJU@value@college} \\
+      \fangsong
+      \FakeBold{\zihao{3} \ZJU@label@title} & \ZJUunderline[270pt]{\zihao{4} \FakeBold{\ZJU@value@title}} \vspace{8mm} \\
+      \FakeBold{\zihao{3} \ZJU@label@author} & \ZJUunderline[270pt]{\zihao{4} \FakeBold{\ZJU@value@author}} \\
+      \FakeBold{\zihao{3} \ZJU@label@grademajor} &  \ZJUunderline[270pt]{\zihao{4} \FakeBold{\ZJU@value@grademajor}} \\
+      \FakeBold{\zihao{3} \ZJU@label@advisor} & \ZJUunderline[270pt]{\zihao{4} \FakeBold{\ZJU@value@advisor}} \\
+      \FakeBold{\zihao{3} \ZJU@label@college} & \ZJUunderline[270pt]{\zihao{4} \FakeBold{\ZJU@value@college}} \\
       %\ZJU@label@date & \ZJUunderline[295pt]{\ZJU@value@chinesedate}
     \end{tabular}
 
     \vspace*{50pt}
   \end{center}
 
+  \clearpage
+}
+
+\newcommand\makecommitment{%
   \newpage
   \begingroup
     \zihao{4}
+    \vspace*{5mm}
     \begin{center}
-      \zihao{3} \FakeBold{浙江大学本科生毕业论文诚信承诺书} \par
+      {\zihao{3} \heiti 浙江大学本科生毕业论文诚信承诺书}
+      \par
     \end{center}
     \par
-    \begin{enumerate}[leftmargin=2em]
+    \vspace*{2mm}
+    \begin{enumerate}[itemindent=3.5em, leftmargin=2em, rightmargin=2em]
       \item 本人郑重地承诺所呈交的毕业论文，是在指导教师的指导下严格按照学校和学院有关规定完成的。
       \item 本人在毕业论文中引用他人的观点和参考资料均加以注释和说明。
       \item 本人承诺在毕业论文选题和研究内容过程中没有抄袭他人研究成果和伪造相关数据等行为。
@@ -398,6 +453,10 @@
     \end{flushright}
   \endgroup
 
+  \clearpage
+}
+
+\newcommand\makeacknowledgement{%
   \newpage
   \begingroup
     \zihao{-4}
@@ -407,43 +466,34 @@
     \par
     \ZJU@value@acknowledgement \par
   \endgroup
-  
-  % \newpage
-  % \begingroup
-  %   \zihao{4} \fangsong
-  %   \FakeBold{一、\ZJU@label@title：\ZJUunderline[295pt]{\ZJU@value@title}} \par
-  %   \FakeBold{二、指导教师对文献综述和开题报告的具体内容要求：} \par
-  %   \ZJU@value@review
-  %   \par
-  %   \vspace*{\fill}
-  %   \begin{flushright}
-  %     \FakeBold{指导教师（签名）}\ZJUunderline[100pt]{} \par
-  %     \FakeBold{年~~~~月~~~~日}
-  %   \end{flushright}
-  % \endgroup
-  % 
-  % \newpage
-  % \begingroup
-  %   \zihao{4} \fangsong
-  %   \begin{center}
-  %       {\zihao{-2} \FakeBold{毕业设计文献综述和开题报告考核}}
-  %   \end{center}
-  %   \par
-  %   \FakeBold{一、对文献综述、外文翻译和开题报告评语及成绩评定：}
-  %   \par
-  %   {\zihao{3} \FakeBold{评语：}}
-  %   \par
-  %   \ZJU@value@remark \par
-  %   \vspace{30mm}
-  %   {\zihao{3} \FakeBold{成绩：}}
-  %   \par
-  %   \ZJU@value@result \par
-  %   \vspace*{\fill}
-  %   \begin{flushright}
-  %     \FakeBold{开题报告答辩小组负责人（签名）}\ZJUunderline[100pt]{} \par
-  %     \FakeBold{年~~~~月~~~~日}
-  %   \end{flushright}
-  % \endgroup
+
+  \clearpage
+}
+
+\newcommand\makeabstract{%
+  \newpage
+  \begingroup
+    \zihao{-4}
+    \begin{center}
+      \zihao{3} \FakeBold{摘要} \par
+    \end{center}
+    \par
+    \ZJU@value@cnabstract \par
+    \begin{flushleft}
+      关键词：\ZJU@value@cnkeywords \par
+    \end{flushleft}
+
+    \vspace*{22.5mm}
+    
+    \begin{center}
+      \zihao{3} \FakeBold{Abstract}
+    \end{center}
+    \par
+    \ZJU@value@enabstract \par
+    \begin{flushleft}
+      Keywords: \ZJU@value@enkeywords \par
+    \end{flushleft}
+  \endgroup
 
   \clearpage
 }
