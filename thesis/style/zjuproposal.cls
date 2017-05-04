@@ -143,7 +143,13 @@
 {\contentslabel{1.5em}}
 {}
 {\titlerule*{.}\contentspage}
-     
+
+\titlecontents{subsubsection}[6em]
+{\zihao{5} \songti}
+{\contentslabel{2.5em}}
+{}
+{\titlerule*{.}\contentspage}
+
 %% CTeX configuration
 \ctexset{
   contentsname=\hfill \zihao{3} \FakeBold{目录} \hfill,
