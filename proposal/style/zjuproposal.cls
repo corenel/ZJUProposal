@@ -161,7 +161,7 @@
     nameformat=\zihao{-4} \songti \FakeBold,
     titleformat=\center \songti \zihao{-2} \FakeBold,
     beforeskip=0pt,
-    afterskip=0pt,
+    afterskip=6mm,
   },
   section={
     number=\chinese{section}、,
@@ -397,32 +397,35 @@
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
-    \zihao{3}\bfseries
-    \vspace*{18mm}
+    \zihao{3}
+    \vspace*{5mm}
     \begin{center}
       \includegraphics[width=100mm]{./style/logo/ZJDX.pdf}\par
-      \vspace{16mm}
+      \vspace{14mm}
       {\zihao{-1} \bfseries \ZJU@label@project}
       \par
-      \vspace{14mm}
+      \vspace{12mm}
       {\zihao{-1} \bfseries \ZJU@label@proposal}
       \par
-      \vspace{18mm}
+      \vspace{12mm}
       \includegraphics[width=30.9mm]{./style/logo/QSY.pdf}
     \end{center} 
-    \vspace{24mm}
+    \vspace{22mm}
 
     \def\tabcolsep{1pt}
     \def\arraystretch{1.2}
     \hskip 15pt
-    \begin{tabular}{lc}
-      %\ZJU@label@title & \ZJUunderline[295pt]{\ZJU@value@title} \\
-      \ZJU@label@author & \ZJUunderline[220pt]{\ZJU@value@author} \\
-      \ZJU@label@advisor & \ZJUunderline[220pt]{\ZJU@value@advisor} \\
-      \ZJU@label@grademajor &  \ZJUunderline[220pt]{\ZJU@value@grademajor} \\
-      \ZJU@label@college & \ZJUunderline[220pt]{\ZJU@value@college} \\
-      %\ZJU@label@date & \ZJUunderline[295pt]{\ZJU@value@chinesedate}
-    \end{tabular}
+    \begingroup
+      \fangsong 
+      \begin{tabular}{lc}
+        %\ZJU@label@title & \ZJUunderline[295pt]{\ZJU@value@title} \\
+        \FakeBold{\ZJU@label@author} & \ZJUunderline[220pt]{\FakeBold{\ZJU@value@author}} \vspace{4mm} \\
+        \FakeBold{\ZJU@label@advisor} & \ZJUunderline[220pt]{\FakeBold{\ZJU@value@advisor}} \vspace{4mm} \\
+        \FakeBold{\ZJU@label@grademajor} &  \ZJUunderline[220pt]{\FakeBold{\ZJU@value@grademajor}} \vspace{4mm} \\
+        \FakeBold{\ZJU@label@college} & \ZJUunderline[220pt]{\FakeBold{\ZJU@value@college}} \vspace{4mm} \\
+        %\ZJU@label@date & \ZJUunderline[295pt]{\ZJU@value@chinesedate}
+      \end{tabular}
+    \endgroup
 
     \vspace*{50pt}
   \end{center}
@@ -434,18 +437,19 @@
 \newcommand\makereview{%
   \cleardoublepage
   \thispagestyle{empty}
+  % \vspace*{1mm}
 
-  \newpage
   \begingroup
     \zihao{4} \fangsong
-    \FakeBold{一、\ZJU@label@title：\ZJUunderline[295pt]{\ZJU@value@title}} \par
+    \FakeBold{一、\ZJU@label@title：\ZJUunderline[295pt]{\songti \ZJU@value@title}} \par
+    \par
     \FakeBold{二、指导教师对文献综述和开题报告的具体内容要求：} \par
     \ZJU@value@advisorreview
     \par
     \vspace*{\fill}
     \begin{flushright}
       \FakeBold{指导教师（签名）}\ZJUunderline[100pt]{\ZJU@value@advisorsignature} \par
-      \FakeBold{\ZJU@value@advisorsigndate}
+      \FakeBold{\songti \ZJU@value@advisorsigndate}
     \end{flushright}
   \endgroup
 
