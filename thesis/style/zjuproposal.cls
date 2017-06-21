@@ -2,7 +2,7 @@
 %%
 %%%%***************************** Version Information ********************************
 %%
-%% Copyright (C) Huangrui Mo <huangrui.mo@gmail.com> 
+%% Copyright (C) Yusu Pan <xxdsox@gmail.com> 
 %% This is free software: you can redistribute it and/or modify it
 %% under the terms of the GNU General Public License as published by
 %% the Free Software Foundation, either version 3 of the License, or
@@ -75,6 +75,11 @@
 \RequirePackage{multicol}
 % Page numbers in footer
 \RequirePackage{fancyhdr}
+%% Improves the verbatim environment, fixing some bugs. Moreover
+%% it provides the comment environment, that lets you add multiple-line
+%% comments or easily comment out big parts of the code.
+\RequirePackage{verbatim}
+\RequirePackage{eqparbox}
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%************************ Load Class Configuretion ********************************
@@ -149,7 +154,7 @@
 {\contentslabel{2.5em}}
 {}
 {\titlerule*{.}\contentspage}
-
+     
 %% CTeX configuration
 \ctexset{
   contentsname=\hfill \zihao{3} \FakeBold{目录} \hfill,
@@ -199,6 +204,8 @@
   }
 }
 
+\newcommand*{\eqnref}[1]{公式~(\ref{#1})}
+
 
 %%%%% --------------------------------------------------------------------------------
 %%
@@ -244,7 +251,7 @@
 %\newcommand\FakeBold[1]{{\CJKfontspec[AutoFakeBold = false]{STSong} \bfseries #1}}
 \newcommand\FakeBold[1]{{\embolden{#1}}}
 
-%%%%% --------------------------------------------------------------------------------
+%%%%% ------------------------------------------------  --------------------------------
 %%
 %%%%*************************** Citing Settings **************************************
 %%
@@ -253,12 +260,17 @@
 % Create cites command
 \newcites{fin}{~}
 
-%% 采用IEEEtran参考文献样式，
+%% 采用GBT7714-2005参考文献样式，
 %% 针对要求进行修改
 \bibliographystylefin{./style/gbt7714-2005}
+% \bibliographystylefin{./style/GBT7714-2005NLang-ZJU}
+% \bibliographystylefin{./style/gbt-7714-2015-numerical}
 
 %% natbib宏包命令，参考文献上标设置。
 \setcitestyle{super,square,comma}
+
+% 参考文献第二行与第一行对齐
+\renewcommand*{\bibnumfmt}[1]{\eqparbox[t]{bblnm}{[#1]}}
 
 %% 重新定义 \ref 命令，使其前面自动加一个 ``~''。因为hyperref 宏包会通过 \AtBegin-
 %% Document 修改 \ref 的定义，因此我们对 \ref 的修改也必须使用\AtBeginDocument 命
@@ -405,29 +417,31 @@
     \vspace*{5mm}
     \begin{center}
       \includegraphics[width=100mm]{./style/logo/ZJDX.pdf}\par
-      \vspace{22.5mm}
-      {\zihao{-1} \bfseries \ZJU@label@project}
+      \vspace{14mm}
+      {\zihao{-1} \heiti \bfseries \ZJU@label@project}
       \par
       \vspace{8mm}
-      {\zihao{-1} \bfseries \ZJU@label@proposal}
+      {\zihao{-1} \heiti \bfseries \ZJU@label@proposal}
       \par
-      % \vspace{8mm}
-      % \includegraphics[width=30.9mm]{./style/logo/QSY.pdf}
+      \vspace{8mm}
+      \includegraphics[width=30.9mm]{./style/logo/QSY.pdf}
     \end{center} 
-    \vspace{32mm}
+    \vspace{22mm}
 
     \def\tabcolsep{1pt}
     \def\arraystretch{1.2}
     \hskip 15pt
-    \begin{tabular}{lc}
+    \begingroup
       \fangsong
-      \FakeBold{\zihao{3} \ZJU@label@title} & \ZJUunderline[270pt]{\zihao{4} \FakeBold{\ZJU@value@title}} \vspace{8mm} \\
-      \FakeBold{\zihao{3} \ZJU@label@author} & \ZJUunderline[270pt]{\zihao{4} \FakeBold{\ZJU@value@author}} \\
-      \FakeBold{\zihao{3} \ZJU@label@grademajor} &  \ZJUunderline[270pt]{\zihao{4} \FakeBold{\ZJU@value@grademajor}} \\
-      \FakeBold{\zihao{3} \ZJU@label@advisor} & \ZJUunderline[270pt]{\zihao{4} \FakeBold{\ZJU@value@advisor}} \\
-      \FakeBold{\zihao{3} \ZJU@label@college} & \ZJUunderline[270pt]{\zihao{4} \FakeBold{\ZJU@value@college}} \\
-      %\ZJU@label@date & \ZJUunderline[295pt]{\ZJU@value@chinesedate}
-    \end{tabular}
+      \begin{tabular}{lc}
+        \FakeBold{\ZJU@label@title：} & \ZJUunderline[270pt]{\FakeBold{\ZJU@value@title}} \vspace{8mm} \\
+        \FakeBold{\ZJU@label@author：} & \ZJUunderline[270pt]{\FakeBold{\ZJU@value@author}} \\
+        \FakeBold{\ZJU@label@grademajor：} &  \ZJUunderline[270pt]{\FakeBold{\ZJU@value@grademajor}} \\
+        \FakeBold{\ZJU@label@advisor：} & \ZJUunderline[270pt]{\FakeBold{\ZJU@value@advisor}} \\
+        \FakeBold{\ZJU@label@college：} & \ZJUunderline[270pt]{\FakeBold{\ZJU@value@college}} \\
+        %\ZJU@label@date & \ZJUunderline[295pt]{\ZJU@value@chinesedate}
+      \end{tabular}
+    \endgroup
 
     \vspace*{50pt}
   \end{center}
@@ -436,7 +450,7 @@
 }
 
 \newcommand\makecommitment{%
-  \newpage
+  \cleardoublepage
   \begingroup
     \zihao{4}
     \vspace*{5mm}
@@ -463,7 +477,7 @@
 }
 
 \newcommand\makeacknowledgement{%
-  \newpage
+  \cleardoublepage
   \begingroup
     \zihao{-4}
     \begin{center}
@@ -477,7 +491,7 @@
 }
 
 \newcommand\makeabstract{%
-  \newpage
+  \cleardoublepage
   \begingroup
     \zihao{-4}
     \begin{center}

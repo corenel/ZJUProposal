@@ -420,8 +420,8 @@
       \begin{tabular}{lc}
         %\ZJU@label@title & \ZJUunderline[295pt]{\ZJU@value@title} \\
         \FakeBold{\ZJU@label@author} & \ZJUunderline[220pt]{\FakeBold{\ZJU@value@author}} \vspace{4mm} \\
-        \FakeBold{\ZJU@label@advisor} & \ZJUunderline[220pt]{\FakeBold{\ZJU@value@advisor}} \vspace{4mm} \\
         \FakeBold{\ZJU@label@grademajor} &  \ZJUunderline[220pt]{\FakeBold{\ZJU@value@grademajor}} \vspace{4mm} \\
+        \FakeBold{\ZJU@label@advisor} & \ZJUunderline[220pt]{\FakeBold{\ZJU@value@advisor}} \vspace{4mm} \\
         \FakeBold{\ZJU@label@college} & \ZJUunderline[220pt]{\FakeBold{\ZJU@value@college}} \vspace{4mm} \\
         %\ZJU@label@date & \ZJUunderline[295pt]{\ZJU@value@chinesedate}
       \end{tabular}
@@ -441,7 +441,7 @@
 
   \begingroup
     \zihao{4} \fangsong
-    \FakeBold{一、\ZJU@label@title：\ZJUunderline[295pt]{\songti \ZJU@value@title}} \par
+    \FakeBold{一、\ZJU@label@title：{\songti \ZJU@value@title}} \par
     \par
     \FakeBold{二、指导教师对文献综述和开题报告的具体内容要求：} \par
     \ZJU@value@advisorreview
