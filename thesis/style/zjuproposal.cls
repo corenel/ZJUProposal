@@ -135,13 +135,13 @@
 {\zihao{5} \songti \bfseries}
 {\contentslabel{2em}}
 {}
-{\titlerule*{.}\contentspage}
+{\FakeBold{\titlerule*{.}\contentspage}}
 
 \titlecontents{section}[2em]
 {\zihao{5} \songti}
 {\contentslabel{1em}}
-{}
-{\titlerule*{.}\contentspage}
+{\hskip-1em}
+{\FakeBold{\titlerule*{.}\contentspage}}
 
 \titlecontents{subsection}[4em]
 {\zihao{5} \songti}
@@ -154,7 +154,7 @@
 {\contentslabel{2.5em}}
 {}
 {\titlerule*{.}\contentspage}
-     
+
 %% CTeX configuration
 \ctexset{
   contentsname=\hfill \zihao{3} \FakeBold{目录} \hfill,
@@ -170,7 +170,7 @@
   },
   section={
     % number=\chinese{section}、,
-    number=\arabic{section},
+    number=\protect\FakeBold{\arabic{section}},
     format=\zihao{-3} \FakeBold,
     aftername=~,
     beforeskip=0pt,
@@ -302,7 +302,7 @@
 \renewcommand\figureautorefname{图}
 \renewcommand\tableautorefname{表}
 \renewcommand\equationautorefname{公式}
-\DeclareCaptionFont{fakebf}{}
+\DeclareCaptionFont{fakebf}{\FakeBold}
 \captionsetup{%
   format=hang,
   labelsep=quad,    % 去掉图表号后的冒号。图序与图名文字之间空一个汉字宽度。

@@ -75,6 +75,8 @@
 \RequirePackage{multicol}
 % Page numbers in footer
 \RequirePackage{fancyhdr}
+\RequirePackage{eqparbox}
+
 %%%%% --------------------------------------------------------------------------------
 %%
 %%%%************************ Load Class Configuretion ********************************
@@ -130,18 +132,18 @@
 {\zihao{-4} \songti}
 {\contentslabel{2em}}
 {}
-{\titlerule*{.}\contentspage}
+{\FakeBold{\titlerule*{.}\contentspage}}
 
-\titlecontents{chapter}[0em]
+\titlecontents{chapter}[2em]
 {\zihao{-4} \songti}
-{\contentslabel{2em}}
+{\contentslabel{0em}}
 {}
 {}
 
 \titlecontents{section}[2em]
 {\zihao{5}}
 {\contentslabel{2em}}
-{}
+{\hskip-2em}
 {\titlerule*{.}\contentspage}
 
 \titlecontents{subsection}[4em]
@@ -178,7 +180,7 @@
     afterskip=0pt
   },
   subsubsection={
-    number=\arabic{subsection}.\arabic{subsubsection}.,
+    number=\arabic{subsection}.\arabic{subsubsection},
     format=\zihao{-4} \FakeBold,
     aftername=~~,
     beforeskip=0pt,
@@ -250,12 +252,15 @@
 
 %% 采用IEEEtran参考文献样式，
 %% 针对要求进行修改
-\bibliographystylerev{./style/IEEEtran_modified}
-\bibliographystylepro{./style/IEEEtran_modified}
-\bibliographystyletra{./style/IEEEtran_modified}
+\bibliographystylerev{./style/gbt7714-2005}
+\bibliographystylepro{./style/gbt7714-2005}
+\bibliographystyletra{./style/gbt7714-2005}
 
 %% natbib宏包命令，参考文献上标设置。
 \setcitestyle{super,square,comma}
+
+% 参考文献第二行与第一行对齐
+\renewcommand*{\bibnumfmt}[1]{\eqparbox[t]{bblnm}{[#1]}}
 
 %% 重新定义 \ref 命令，使其前面自动加一个 ``~''。因为hyperref 宏包会通过 \AtBegin-
 %% Document 修改 \ref 的定义，因此我们对 \ref 的修改也必须使用\AtBeginDocument 命
@@ -287,7 +292,7 @@
 \renewcommand\figureautorefname{图}
 \renewcommand\tableautorefname{表}
 \renewcommand\equationautorefname{公式}
-\DeclareCaptionFont{fakebf}{}
+\DeclareCaptionFont{fakebf}{\FakeBold}
 \captionsetup{%
   format=hang,
   labelsep=quad,    % 去掉图表号后的冒号。图序与图名文字之间空一个汉字宽度。
