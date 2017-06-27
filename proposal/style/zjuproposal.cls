@@ -424,10 +424,10 @@
       \fangsong 
       \begin{tabular}{lc}
         %\ZJU@label@title & \ZJUunderline[295pt]{\ZJU@value@title} \\
-        \FakeBold{\ZJU@label@author} & \ZJUunderline[220pt]{\FakeBold{\ZJU@value@author}} \vspace{4mm} \\
-        \FakeBold{\ZJU@label@grademajor} &  \ZJUunderline[220pt]{\FakeBold{\ZJU@value@grademajor}} \vspace{4mm} \\
-        \FakeBold{\ZJU@label@advisor} & \ZJUunderline[220pt]{\FakeBold{\ZJU@value@advisor}} \vspace{4mm} \\
-        \FakeBold{\ZJU@label@college} & \ZJUunderline[220pt]{\FakeBold{\ZJU@value@college}} \vspace{4mm} \\
+        \ZJU@label@author & \ZJUunderline[220pt]{\ZJU@value@author} \vspace{4mm} \\
+        \ZJU@label@grademajor &  \ZJUunderline[220pt]{\ZJU@value@grademajor} \vspace{4mm} \\
+        \ZJU@label@advisor & \ZJUunderline[220pt]{\ZJU@value@advisor} \vspace{4mm} \\
+        \ZJU@label@college & \ZJUunderline[220pt]{\ZJU@value@college} \vspace{4mm} \\
         %\ZJU@label@date & \ZJUunderline[295pt]{\ZJU@value@chinesedate}
       \end{tabular}
     \endgroup
